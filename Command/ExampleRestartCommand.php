@@ -6,11 +6,11 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Bundle\FrameworkBundle\Command\Command;
 
 use CodeMeme\Bundle\CodeMemeDaemonBundle\Daemon;
 
-class ExampleRestartCommand extends ContainerAwareCommand
+class ExampleRestartCommand extends Command
 {
     
     protected function configure()
@@ -25,12 +25,12 @@ EOT
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $daemon = new Daemon($this->getContainer()->getParameter('example.daemon.options'));
+        $daemon = new Daemon($this->container->getParameter('example.daemon.options'));
 
         $daemon->reStart();
         
         while ($daemon->isRunning()) {
-            $this->getContainer()->get('example.control')->run();
+            $this->container->get('example.control')->run();
         }
         
         $daemon->stop();
