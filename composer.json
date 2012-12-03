@@ -1,0 +1,13 @@
+{
+    "name": "codememe/daemon-bundle",
+    "type": "symfony-bundle",
+    "description": "Runs Symfony2 console commands as system daemon. Wrapper for System_Daemon PEAR library",
+    "homepage": "https://github.com/CodeMeme/CodeMemeDaemonBundle",
+    "require": {
+        "symfony/symfony": "2.0.x"
+    },
+    "autoload": {
+        "psr-0": { "CodeMeme\\Bundle\\CodeMemeDaemonBundle": "" }
+    },
+    "target-dir": "CodeMeme/Bundle/CodeMemeDaemonBundle"
+}
